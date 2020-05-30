@@ -10,7 +10,7 @@ Post something to Twitter from command line :-) May be useful in shell script us
 
     `make deps`
 
-    `make`
+    `make` or `make build-windows`
 
 ## Usage
 1. Prepare OAuth token as environment variables below.
@@ -25,6 +25,4 @@ Post something to Twitter from command line :-) May be useful in shell script us
 
 2. Tweet !!
 
-    `./twitter 'Hello World!'`
-
-    Note: Must quote your update message.
+    `./twitter Hello World!`

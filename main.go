@@ -2,7 +2,6 @@
 package main
 
 import (
-	"flag"
 	. "fmt"
 	"github.com/ChimeraCoder/anaconda"
 	. "os"
@@ -11,17 +10,28 @@ import (
 func main() {
 	api := GetTwitterApi()
 
-	flag.Parse()
-	if len(Args) == 1 {
-		panic("Usage: twitter status_text\n\nPlease specify status.")
+	if len(Args) < 2 {
+		Println("Usage: twitter status_text\n\nPlease specify status and Environment variable shown below.\nTWITTER_CONSUMER_KEY\nTWITTER_CONSUMER_SECRET\nTWITTER_ACCESS_TOKEN\nTWITTER_ACCESS_TOKEN_SECRET")
+		Exit(255)
 	}
-	text := flag.Arg(0)
-	tweet, err := api.PostTweet(text, nil)
+
+	tweet, err := api.PostTweet(parse_message(Args), nil)
 	if err != nil {
 		panic(err)
 	}
 
 	Print(tweet.Text)
+}
+
+func parse_message(args []string) string {
+	var text string = ""
+	for i, v := range args {
+		if i == 0 {
+			continue	// skip first arg value (It is name of executable)
+		}
+		text += " " + v
+	}
+	return text
 }
 
 func GetTwitterApi() *anaconda.TwitterApi {
