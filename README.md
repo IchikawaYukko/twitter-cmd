@@ -1,4 +1,4 @@
-# twitter-cmd
+# twitter-cmd [日本語](READMEja.md)
 Post something to Twitter from command line :-) May be useful in shell script use ?
 
 ## Build
@@ -25,4 +25,6 @@ Post something to Twitter from command line :-) May be useful in shell script us
 
 2. Tweet !!
 
-    `./twitter Hello World!`
+    Linux: `./twitter Hello World!`
+
+    Windows: `twitter.exe Hello World!`
