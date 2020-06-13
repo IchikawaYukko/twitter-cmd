@@ -3,3 +3,4 @@ src/github.com/*
 .vscode/*
 *.exe
 twitter
+test?.jpg
