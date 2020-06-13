@@ -2,6 +2,7 @@
 package main
 
 import (
+	"encoding/base64"
 	. "fmt"
 	"github.com/ChimeraCoder/anaconda"
 	. "os"
@@ -16,6 +17,8 @@ func main() {
 	}
 
 	message, files := parse_message(Args)
+	
+	base64.StdEncoding.EncodeToString(data)
 	Println(files)
 
 	tweet, err := api.PostTweet(message, nil)
