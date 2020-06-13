@@ -30,6 +30,9 @@ Post something to Twitter from command line :-) May be useful in shell script us
     Windows: `twitter.exe Hello World!`
 
 3. Tweet with image
+
     `./twitter -m filename1 Hello World?`
+
     `./twitter -m filename1 -m filename?2 Hello World?`
+
     (4 files can be specified at one time)
