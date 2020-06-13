@@ -28,3 +28,8 @@
     Linux: `./twitter ゎーぉ！`
 
     Windows: `twitter.exe ゎーぉ！`
+
+3. 画像付きツイート
+    `./twitter -m ファイル名1 ゎーぉ！`
+    `./twitter -m ファイル名1 -m ファイル名2 ゎーぉ！`
+    (ファイルは4つまで指定できるよ)
