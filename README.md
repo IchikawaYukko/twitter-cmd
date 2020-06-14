@@ -1,4 +1,7 @@
-# twitter-cmd [日本語](READMEja.md)
+ [日本語](READMEja.md)
+# twitter-cmd
+Simple CLI Twitter client.
+
 Post something to Twitter from command line :-) May be useful in shell script use ?
 
 ## Build
@@ -11,6 +14,8 @@ Post something to Twitter from command line :-) May be useful in shell script us
     `make deps`
 
     `make` or `make build-windows`
+
+Or you can download pre compiled executable from [releases](https://github.com/IchikawaYukko/twitter-cmd/releases).
 
 ## Usage
 1. Prepare OAuth token as environment variables below.

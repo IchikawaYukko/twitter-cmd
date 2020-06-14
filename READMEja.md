@@ -1,4 +1,7 @@
-# twitter-cmd [English](README.md)
+[English](README.md)
+# twitter-cmd
+コマンドライン簡易ツイッタークライアント！
+
 コマンドラインからツイートできる何か！ シェルスクリプト用に便利！？
 
 ## ビルド
@@ -11,6 +14,8 @@
     `make deps`
 
     `make` または `make build-windows`
+
+[releases](https://github.com/IchikawaYukko/twitter-cmd/releases) からビルド済みバイナリをダウンロードしてもいい。
 
 ## 使い方
 1. 以下の OAuth トークンを環境変数に準備する
