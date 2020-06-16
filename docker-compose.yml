@@ -6,6 +6,8 @@ version: '2'
 
 services:
   build-env:
-    image: golang:stretch
+    image: golang:alpine3.12
     volumes:
       - .:/go
+    command: "sh -c 'apk add upx make && sh'"
+  

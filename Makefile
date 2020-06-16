@@ -12,8 +12,10 @@ BINARY_WIN_SUFFIX=.exe
 all: build
 build:
 	CGO_ENABLED=0 $(GOBUILD) -o $(BINARY_NAME) --ldflags $(LDFLAGS) -i -v
+	upx -9v twitter
 build-windows:
 	GOOS=windows CGO_ENABLED=0 $(GOBUILD) -o $(BINARY_NAME)$(BINARY_WIN_SUFFIX) --ldflags $(LDFLAGS) -i -v
+	upx -9v $(BINARY_NAME)$(BINARY_WIN_SUFFIX)
 test:
 	$(GOTEST) -v ./...
 fmt:
