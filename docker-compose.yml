@@ -1,7 +1,3 @@
-# Launch build environment
-# Type:
-# docker-compose run build-env
-
 version: '2'
 
 services:
