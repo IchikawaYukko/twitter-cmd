@@ -3,7 +3,7 @@ package main
 
 import (
 	"encoding/base64"
-	. "fmt"
+	"fmt"
 	"github.com/ChimeraCoder/anaconda"
 	"io/ioutil"
 	"net/url"
@@ -15,18 +15,13 @@ func main() {
 	api := GetTwitterApi()
 
 	if len(os.Args) < 2 {
-		Println(`
+		fmt.Println(`
 Usage:
 twitter status_text
 twitter -m media_filename1 status_text
 twitter -m media_filename1 -m media_filename2 status_text    (Up to 4 media)
 twitter "-m foobar"  (if status_text contains -m, must quote it.)
 
-Please specify status and Environment variable shown below.
-TWITTER_CONSUMER_KEY
-TWITTER_CONSUMER_SECRET
-TWITTER_ACCESS_TOKEN
-TWITTER_ACCESS_TOKEN_SECRET
 `)
 		os.Exit(255)
 	}
@@ -38,7 +33,7 @@ TWITTER_ACCESS_TOKEN_SECRET
 	)
 
 	if 4 < len(files) {
-		Println(os.Stderr, "Only 4 images can be posted at one time.")
+		fmt.Println(os.Stderr, "Only 4 images can be posted at one time.")
 		os.Exit(-1)
 	} else if 0 < len(files) {
 		for _, file := range files {
@@ -51,17 +46,17 @@ TWITTER_ACCESS_TOKEN_SECRET
 
 	tweet, err := api.PostTweet(message, attachment)
 	if err != nil {
-		Println(os.Stderr, err)
+		fmt.Println(os.Stderr, err)
 		os.Exit(-1)
 	}
 
-	Print(tweet.Text)
+	fmt.Print(tweet.Text)
 }
 
 func upload_image(api *anaconda.TwitterApi, filename string) string {
 	media, err := api.UploadMedia(load_image(filename))
 	if err != nil {
-		Println(os.Stderr, err)
+		fmt.Println(os.Stderr, err)
 		os.Exit(-1)
 	}
 
@@ -71,7 +66,7 @@ func upload_image(api *anaconda.TwitterApi, filename string) string {
 func load_image(path string) string {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
-		Println(os.Stderr, err)
+		fmt.Println(os.Stderr, err)
 		os.Exit(-1)
 	}
 	return base64.StdEncoding.EncodeToString(data)
@@ -104,8 +99,16 @@ func parse_message(args []string) (string, []string) {
 }
 
 func GetTwitterApi() *anaconda.TwitterApi {
-	anaconda.SetConsumerKey(os.Getenv("TWITTER_CONSUMER_KEY"))
-	anaconda.SetConsumerSecret(os.Getenv("TWITTER_CONSUMER_SECRET"))
-	api := anaconda.NewTwitterApi(os.Getenv("TWITTER_ACCESS_TOKEN"), os.Getenv("TWITTER_ACCESS_TOKEN_SECRET"))
+	anaconda.SetConsumerKey(consumer_token)
+	anaconda.SetConsumerSecret(consumer_secret)
+
+	// If token is missing, get it
+	_, err := os.Stat(token_savefile)
+	if err != nil {
+		save_token(get_token())
+	}
+
+	access_token, access_secret := load_token()
+	api := anaconda.NewTwitterApi(access_token, access_secret)
 	return api
 }

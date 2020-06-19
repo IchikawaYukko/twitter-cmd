@@ -1,4 +1,4 @@
-[日本語](READMEja.md)
+[???](READMEja.md)
 # twitter-cmd
 Simple CLI Twitter client.
 
@@ -9,7 +9,12 @@ Post something to Twitter from command line :-) May be useful in shell script us
 
     `docker-compose run build-env`
 
-2. Build
+1. Set OAuth CONSUMER_KEY and CONSUMER_SECRET
+
+    1. Get your key/secret from Twitter Developpers > Apps page.
+    1. Set it to consumer_token.go
+
+1. Build
 
     `make deps`
 
@@ -17,24 +22,36 @@ Post something to Twitter from command line :-) May be useful in shell script us
 
 Or you can download pre compiled executable from [releases](https://github.com/IchikawaYukko/twitter-cmd/releases).
 
-## Usage
-1. Prepare OAuth token as environment variables below.
+## Usage (Get OAuth token)
 
-    `TWITTER_CONSUMER_KEY=`
+1. Start OAuth Authentication
 
-    `TWITTER_CONSUMER_SECRET=`
+    `./twitter 1`
 
-    `TWITTER_ACCESS_TOKEN=`
+    This will show Authenticate URL like this
 
-    `TWITTER_ACCESS_TOKEN_SECRET=`
+```
+Open this URL and login with your Twitter account.
+https://api.twitter.com/oauth/authenticate?oauth_token=xxxxxxxxxx
+```
+2. Open Authenticate URL by browser.
 
-2. Tweet !!
+3. Enter PIN
+
+```
+Enter PIN: *******
+Token saved to .ichikawayukko-twitter_cmd
+Erase this file to re-authenticate.
+```
+
+# Usage (Tweet)
+1. Tweet !!
 
     Linux: `./twitter Hello World!`
 
     Windows: `twitter.exe Hello World!`
 
-3. Tweet with image
+1. Tweet with image
 
     `./twitter -m filename1 Hello World?`
 

@@ -9,7 +9,12 @@
 
     `docker-compose run build-env`
 
-2. ビルド
+1. CONSUMER_KEY と CONSUMER_SECRET の設定
+
+    1. Twitter Developpers > Apps ページがら、自分用の key/secret を取得
+    1. 取得した key/secret を consumer_token.go に書き込む
+
+1. ビルド
 
     `make deps`
 
@@ -17,24 +22,36 @@
 
 [releases](https://github.com/IchikawaYukko/twitter-cmd/releases) からビルド済みバイナリをダウンロードしてもいい。
 
-## 使い方
-1. 以下の OAuth トークンを環境変数に準備する
+## 使い方 (OAuth トークンの取得)
 
-    `TWITTER_CONSUMER_KEY=`
+1. OAuth 認証を開始
 
-    `TWITTER_CONSUMER_SECRET=`
+    `./twitter 1`
 
-    `TWITTER_ACCESS_TOKEN=`
+    実行すると、以下のような認証URLが表示されます。
 
-    `TWITTER_ACCESS_TOKEN_SECRET=`
+```
+Open this URL and login with your Twitter account.
+https://api.twitter.com/oauth/authenticate?oauth_token=xxxxxxxxxx
+```
+2. 表示された URL をブラウザで開く
 
-2. つぶやく!!
+3. 認証後に表示された PIN を入力
+
+```
+Enter PIN: *******
+Token saved to .ichikawayukko-twitter_cmd
+Erase this file to re-authenticate.
+```
+
+## 使い方 (ツイート)
+1. つぶやく!!
 
     Linux: `./twitter ゎーぉ！`
 
     Windows: `twitter.exe ゎーぉ！`
 
-3. 画像付きツイート
+1. 画像付きツイート
 
     `./twitter -m ファイル名1 ゎーぉ！`
 
