@@ -1,4 +1,4 @@
-[???](READMEja.md)
+[日本語](READMEja.md)
 # twitter-cmd
 Simple CLI Twitter client.
 
