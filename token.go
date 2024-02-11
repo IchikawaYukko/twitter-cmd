@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var token_savefile string = ".ichikawayukko-twitter_cmd"
+var token_savefile string = "~/.ichikawayukko-twitter_cmd"
 
 func get_token() (string, string) {
 	api := anaconda.NewTwitterApi("", "")
