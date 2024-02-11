@@ -14,9 +14,11 @@ Post something to Twitter from command line :-) May be useful in shell script us
     1. Get your key/secret from Twitter Developpers > Apps page.
     1. Set it to consumer_token.go
 
-1. Build
+1. Fetch dependent packages
 
     `make deps`
+
+1. Build
 
     `make` or `make build-windows`
 

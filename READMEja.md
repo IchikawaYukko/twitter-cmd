@@ -14,9 +14,11 @@
     1. Twitter Developpers > Apps ページがら、自分用の key/secret を取得
     1. 取得した key/secret を consumer_token.go に書き込む
 
-1. ビルド
+1. 依存パッケージを取得
 
     `make deps`
+
+1. ビルド
 
     `make` または `make build-windows`
 
